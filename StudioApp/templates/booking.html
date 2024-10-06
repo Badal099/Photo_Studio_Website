@@ -1,0 +1,198 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <style>
+        .input-group {
+            margin: 0 auto;
+            width: 380px;
+        }
+        
+        .input-Field {
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
+            border-bottom: 2px solid rgb(52, 116, 236);
+            outline: none;
+            background: transparent;
+        }
+    </style>
+    <title>Photo Shop.com</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center; margin-top: 40px;">
+        <img src="{% static 'logo.jpg' %}" alt="..." width="220px" height="85px">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: 30px;">
+            <div class="container-fluid">
+                <svg xmlns="http://www.w3.org/2000/svg" style="font-weight: bold; color: rgb(111, 184, 226);" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <a class="navbar-brand" href="#" style="font-weight: bold; color: white;
+                text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;">PHOTO SHOP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item col-sm-4">
+                            <a class="nav-link" href="{{curl}}" style="font-weight: 600;">HOME</a>
+                        </li>
+                        <li class="nav-item col-sm-4">
+                            <a class="nav-link" href="{{curl}}about/" style="font-weight: 600;">ABOUT US</a>
+                        </li>
+                        <li class="nav-item col-sm-4">
+                            <a class="nav-link" href="{{curl}}services/" style="font-weight: 600;">SERVICES</a>
+                        </li>
+                        <li class="nav-item dropdown col-sm-4">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: 600;">
+                      PORTFOLIO
+                    </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{curl}}creative/">CREATIVE PHOTOGRAPHY</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}wedding/">WEDDING SHOOT</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}birthday/">BIRTHDAY SHOOT</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}festival/">FESTIVAL SHOOT</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}fashion/">FASHION PHOTOGRAPHY</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}agricultural/">AGRICULTURE PHOTOGRAPHY</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}adventural/">ADVENTURAL PHOTOGRAPHY</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}sports/">SPORTS PHOTOGRAPHY</a></li>
+                                <li><a class="dropdown-item" href="{{curl}}newborn/">NEWBORN BABY SHOOT</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item col-sm-4">
+                            <a class="nav-link active" aria-current="page" href="{{curl}}booking/" style="font-weight: 600;">BOOKING</a>
+                        </li>
+                        <li class="nav-item col-sm-4">
+                            <a class="nav-link" href="{{curl}}contact/" style="font-weight: 600;">CONTACT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center" style="margin-top: 60px;">
+            <h1 class="display-4 fw-normal" style="font-family:'Droid Serif','Arial'; font-size:2em;">PRICING & CHARGES</h1>
+        </div>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                {% for p in pricing %}
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3 text-white bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">{{p.eventname}}</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">₹ {{p.price}}<small class="text-muted fw-light">/day</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>{{p.item1}}</li>
+                                <li>{{p.item2}}</li>
+                                <li>{{p.item3}}</li>
+                                <li>{{p.item4}}</li>
+                            </ul>
+                            <a href="#book" style="color: Black; font-style: italic;"><button type="button" class="w-100 btn btn-lg btn-outline-primary">Booking</button></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </main>
+        <section id="book">
+            <div class="ttr_Services_html_row0 row" style="margin-top: 70px; margin-bottom: 70PX;">
+                <div class="post_column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ttr_Services_html_column00">
+                        <div class="html_content">
+                            <p style="margin:0.36em 0em 0em 0em;text-align:Center;"><span style="text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;font-family:'Times New Roman', Times, serif; font-weight:700;font-size:2.7em;">BOOK AN EVENT</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="input-group" action="{{curl}}booking/" method="POST">
+                {% csrf_token %}
+                <input type="text" class="input-Field" name="name" placeholder="Enter Your Name" required>
+                <input type="text" class="input-Field" name="phone" placeholder="Enter Your Phone Number" required>
+                <input type="email" class="input-Field" name="email" placeholder="Enter Your E-mail" required>
+                <select class="input-Field" name="event" required>
+                    <Option>Select Any Event</Option>
+                    <Option>CREATIVE PHOTOGRAPHY</Option>
+                    <Option>WEDDING SHOOT</Option>
+                    <Option>BIRTHDAY SHOOT</Option>
+                    <Option>FESTIVAL SHOOT</Option>
+                    <Option>FASHION PHOTOGRAPHY</Option>
+                    <Option>AGRICULTURE PHOTOGRAPHY</Option>
+                    <Option>ADVENTURE PHOTOGRAPHY</Option>
+                    <Option>SPORTS PHOTOGRAPHY</Option>
+                    <Option>NEWBORN BABY SHOOT</Option>
+                </select>
+                <input type="text" class="input-Field" name="address" placeholder="Enter Event Address" required>
+                <input type="text" class="input-Field" name="message" placeholder="Any Message(Optional)">
+                <input type="date" class="input-Field" name="date" required>
+                <input type="time" class="input-Field" name="time" required>
+                <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 40px;">
+                    <button type="submit" class="btn btn-outline-primary">Send</button>
+                </div>
+            </form>
+            <span style="font-size: 20px; color: green;">{{msg}}</span>
+        </section>
+        <footer id="ttr_footer" style="margin-top: 100px; background-color: rgb(233, 229, 229);padding: 20px;">
+            <div class="ttr_footerHome_html_row0 row">
+                <div class="post_column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="ttr_footerHome_html_column00">
+                        <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                        <div class="html_content">
+                            <p style="text-align:Center;"><br style="font-family:'Montserrat','Arial';font-weight:700;font-size:1.429em;" /></p>
+                            <p style="text-align:Center;"><br style="font-family:'Montserrat','Arial';font-weight:700;font-size:1.429em;" /></p>
+                            <p style="margin:0.36em 0em 2.14em 0em;text-align:Center;"><span style="font-family:'Montserrat','Arial';font-weight:700;font-size:1.429em;">GET TOUCH WITH US</span></p>
+                            <p style="margin:0.36em 0em 0em 0em;text-align:Center;line-height:1.83098591549296;"><span style="font-family:'Droid Serif','Arial';">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </span></p>
+                            <p style="margin:0em 0em 1.43em 0em;text-align:Center;line-height:1.83098591549296;"><span style="font-family:'Droid Serif','Arial';">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span></p>
+                            <p style="margin:0.36em 0em 0.71em 0em;text-align:Center;line-height:1.83098591549296;"><span style="font-family:'Droid Serif','Arial';">Village - Dabhad, District - Khargone&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp; (+91) 8085119177&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp; badalchouhan295@gmail.com</span></p>
+                        </div>
+                        <div style="height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;"></div>
+                    </div>
+                </div>
+                <div class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
+                </div>
+            </div>
+            <div class="ttr_footer_bottom_footer">
+                <div class="ttr_footer_bottom_footer_inner">
+                    <div id="ttr_footer_designed_by_links">
+                        <a href="#" target="_self">
+            Website
+            </a>
+                        <span id="ttr_footer_designed_by">
+            Designed by Chouhan Ji
+            </span>
+                    </div>
+                    <a href="http://www.facebook.com/TemplateToaster" class="ttr_footer_facebook" target="_self">
+                    </a>
+                    <a href="http://www.templatetoaster.com" class="ttr_footer_linkedin" target="_self">
+                    </a>
+                    <a href="http://twitter.com/templatetoaster" class="ttr_footer_twitter" target="_self">
+                    </a>
+                    <a href="http://www.templatetoaster.com" class="ttr_footer_googleplus" target="_self">
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js " integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf " crossorigin="anonymous "></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js " integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG " crossorigin="anonymous "></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js " integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc " crossorigin="anonymous "></script>
+                -->
+</body>
+
+</html>
